@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Write with me</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#eef1f4;--card:#fff;--text:#161b22;--muted:#5d6775;--accent:#2457d6;--on:#fff;--line:#d9dee5;--soft:#e8eefc;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1217;--card:#181d25;--text:#eef1f5;--muted:#9aa4b2;--accent:#8fb0ff;--on:#0f1217;--line:#2b323d;--soft:#1c2740;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0f1217;--card:#181d25;--text:#eef1f5;--muted:#9aa4b2;--accent:#8fb0ff;--on:#0f1217;--line:#2b323d;--soft:#1c2740;color-scheme:dark}
+*{box-sizing:inherit}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--text);font:400 16px/1.55 "DM Sans",system-ui,sans-serif}
+main{max-width:720px;margin:0 auto;padding:20px 16px 48px}
+h1,h2,h3{font-family:"Bricolage Grotesque","DM Sans",system-ui,sans-serif;margin:0;line-height:1.15}
+h1{font-size:1.9rem;font-weight:800}
+.top{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap;margin-bottom:16px}
+.stats{display:flex;gap:18px;color:var(--muted);font-size:.9rem}.stats b{display:block;font:800 1.5rem "Bricolage Grotesque",sans-serif;color:var(--text)}
+.strip{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;background:#0b0d11;padding:14px 8px;border-radius:8px;margin:14px 0;position:relative}
+.strip:before,.strip:after{content:"";position:absolute;left:8px;right:8px;height:5px;background:repeating-linear-gradient(90deg,#5b6472 0 8px,transparent 8px 16px);opacity:.7}
+.strip:before{top:4px}.strip:after{bottom:4px}
+.fr{height:46px;border-radius:3px;background:#262c36;border:0;color:#fff;font:700 .75rem "DM Sans",sans-serif;cursor:pointer;position:relative;overflow:hidden;padding:0}
+.fr i{position:absolute;inset:0;transform-origin:left;transition:transform .4s}
+.fr span{position:relative;text-shadow:0 1px 3px #000}
+.fr.on{outline:2px solid #fff;outline-offset:1px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px;margin-bottom:14px}
+.coach{background:var(--soft);border-color:transparent}
+.coach p{margin:.4rem 0 0}.k{font-weight:700}
+.row{display:flex;gap:8px;flex-wrap:wrap}
+input[type=text],input[type=date],textarea,select{font:inherit;color:var(--text);background:var(--card);border:1px solid var(--line);border-radius:6px;padding:9px 10px;min-width:0}
+input[type=text]{flex:1}textarea{width:100%;min-height:76px;resize:vertical}textarea.big{min-height:300px;font-family:"Courier New",monospace;font-size:.95rem}
+button.b{font:700 .95rem "DM Sans",sans-serif;background:var(--accent);color:var(--on);border:0;border-radius:6px;padding:9px 14px;cursor:pointer}
+button.b.alt{background:transparent;color:var(--accent);border:1px solid var(--accent)}
+button.x{background:none;border:0;color:var(--muted);cursor:pointer;font-size:1.1rem}
+button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.banner{height:150px;border-radius:10px 10px 0 0;margin:-16px -16px 14px;padding:16px;display:flex;align-items:flex-end;color:#fff;position:relative;background:radial-gradient(circle at 18% 25%,rgba(255,255,255,.4),transparent 38%),radial-gradient(circle at 85% 80%,rgba(0,0,0,.35),transparent 50%),linear-gradient(135deg,var(--c1),var(--c2))}
+.banner:before,.banner:after{content:"";position:absolute;left:0;right:0;height:14px;background:rgba(0,0,0,.55)}
+.banner:before{top:0}.banner:after{bottom:0}
+.banner div{position:relative;z-index:1;text-shadow:0 1px 4px rgba(0,0,0,.7);padding-bottom:10px}
+.banner h2{font-size:1.7rem;font-weight:800}.banner small{display:block;font-size:.88rem;max-width:46ch}
+.it{display:flex;gap:10px;padding:9px 0;border-top:1px solid var(--line);align-items:flex-start}
+.it:first-of-type{border-top:0}
+.it input{width:20px;height:20px;margin-top:3px;accent-color:var(--c2);flex:none}
+.it .t{font-weight:500;flex:1}.it.d .t{text-decoration:line-through;color:var(--muted)}
+.tip{color:var(--muted);font-size:.9rem;margin-top:2px}
+h3.w{margin:18px 0 6px;font-size:1.05rem}
+.dots{display:flex;gap:5px;margin-top:8px}.dots span{width:14px;height:14px;border-radius:50%;background:var(--line)}.dots span.on{background:#f5c518}
+.timer{font:800 2rem "Bricolage Grotesque",sans-serif}
+details summary{cursor:pointer;font-size:1.05rem;margin-bottom:6px}
+:root{--t1:#2457d6;--t2:#8fb0ff;--ta:var(--t1)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--ta:var(--t2)}}
+:root[data-theme="dark"]{--ta:var(--t2)}
+body{background:linear-gradient(180deg,color-mix(in srgb,var(--t2) 20%,var(--bg)),var(--bg) 380px) no-repeat,var(--bg)}
+.ic{flex:none}
+button.b{display:inline-flex;align-items:center;gap:6px;background:var(--t1);color:#fff}
+button.b.alt{background:transparent;color:var(--ta);border:1px solid var(--ta)}
+.brand{display:flex;gap:12px;align-items:center}.logo{width:46px;height:46px;border-radius:14px;background:linear-gradient(135deg,var(--t1),var(--t2));color:#fff;display:grid;place-items:center;box-shadow:0 4px 14px color-mix(in srgb,var(--t2) 50%,transparent)}
+.chip{display:flex;gap:8px;align-items:center}.chip i{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;background:var(--b);color:#1a1405}
+.coach{background:linear-gradient(135deg,color-mix(in srgb,var(--t2) 24%,var(--card)),var(--card));border:1px solid color-mix(in srgb,var(--t2) 45%,var(--line));border-left:6px solid var(--t2)}
+.hd{display:flex;align-items:center;gap:8px;color:var(--ta)}
+#ib{background:linear-gradient(135deg,color-mix(in srgb,#f5c518 16%,var(--card)),var(--card));border-left:6px solid #f5c518}
+.fr{height:58px}.fr span{display:flex;flex-direction:column;align-items:center;gap:2px;font-size:.62rem;line-height:1.1}.fr em{font-style:normal}
+.banner .big{position:absolute;right:20px;top:22px;opacity:.3;animation:fl 5s ease-in-out infinite}
+@keyframes fl{50%{transform:translateY(-8px) rotate(5deg)}}
+#stg{border-top:4px solid var(--c2)}#stg.in{animation:ent .4s ease both}
+@keyframes ent{from{opacity:0;transform:translateY(12px)}}
+.sp.k-s textarea{color:var(--ta)}.sp.k-c textarea{color:color-mix(in srgb,#a855f7 65%,var(--text))}.sp.k-p textarea{color:color-mix(in srgb,#06b6d4 55%,var(--text))}.sp.k-t textarea{color:color-mix(in srgb,#f97316 65%,var(--text))}
+.tb button[data-k=s]{border-bottom:3px solid var(--ta)}.tb button[data-k=a]{border-bottom:3px solid var(--muted)}.tb button[data-k=c]{border-bottom:3px solid #a855f7}.tb button[data-k=d]{border-bottom:3px solid var(--text)}.tb button[data-k=p]{border-bottom:3px solid #06b6d4}.tb button[data-k=t]{border-bottom:3px solid #f97316}
+.cf{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:50}.cf i{position:absolute;top:-14px;width:9px;height:14px;border-radius:2px;animation:fall 2.4s ease-in forwards}
+@keyframes fall{to{transform:translate(var(--x),105vh) rotate(720deg)}}
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--t1);color:#fff;padding:10px 18px;border-radius:999px;font-weight:700;z-index:51;box-shadow:0 6px 24px rgba(0,0,0,.3);animation:tin .3s ease both}
+@keyframes tin{from{opacity:0;transform:translate(-50%,10px)}}
+@media (prefers-reduced-motion:reduce){.cf{display:none}.banner .big{animation:none}#stg.in{animation:none}.toast{animation:none}}
+.tb{display:flex;gap:6px;flex-wrap:wrap}.tb button{font:600 .8rem "DM Sans",sans-serif;background:var(--card);color:var(--text);border:1px solid var(--line);border-radius:6px;padding:6px 9px;cursor:pointer}.tb button.on{background:var(--accent);color:var(--on);border-color:var(--accent)}
+.page{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:18px 16px;font:15px/1.45 "Courier New",Courier,monospace;margin-top:8px;overflow-x:auto}
+.sp{margin:0 0 8px}.sp textarea{width:100%;min-height:0;border:0;background:transparent;padding:2px 0;font:inherit;color:inherit;resize:none;overflow:hidden;border-radius:0}.sp textarea:focus{outline:1px dashed var(--accent);outline-offset:2px}
+.sp.k-s{margin-top:14px}.sp.k-s textarea{text-transform:uppercase;font-weight:700}
+.sp.k-c{margin-left:36%;width:50%;margin-bottom:0}.sp.k-c textarea{text-transform:uppercase}
+.sp.k-p{margin-left:28%;width:36%;margin-bottom:0}.sp.k-d{margin-left:17%;width:60%}
+.sp.k-t{text-align:right}.sp.k-t textarea{text-align:right;text-transform:uppercase}
+@media (prefers-reduced-motion:reduce){.fr i{transition:none}}
+</style></head><body><main>
+<div class="top"><div class="brand"><div class="logo"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 4v16M17 4v16M3 9h4M3 15h4M17 9h4M17 15h4"/></svg></div><div><h1>Write with me</h1><div class="tip">Your co-pilot from first idea to premiere. Do the work right here.</div></div></div><div class="stats" id="stats"></div></div>
+<div id="app"></div>
+</main>
+<script>
+var STAGES=[
+{n:"Ideate",c1:"#92400e",c2:"#f59e0b",st:["Whiplash","Its director made a short version first to prove the idea. Start small and prove it."],q:"What did this idea teach me about choosing ideas?",
+ f:[["logline","Logline","One sentence: who wants what, and what stands in the way."],["why","Why this film, why me","Two honest lines you can reread on bad days."],["rule","The world and its rule","What is different about this world? One rule, e.g. memories can be bought."],["twist","The twist","What does the audience learn late that changes everything?"],["image","The final image","The last thing we see. Start here and work backward."]],l:[],date:1,
+ i:[["Write a one-sentence logline","If you can’t say it in one sentence, the film may still be two ideas. Name the character, the want and the obstacle."],["Say why this film and why you","Films with a personal reason survive the hard middle."],["Set your limits","Pick runtime, locations and cast size now. Constraints finish films; open scope stalls them."],["Choose a premiere date","A date makes it real. Even a living-room screening counts. Set it in the box above."]]},
+{n:"Script",c1:"#9f1239",c2:"#fb7185",st:["Before Sunrise","Mostly two people walking and talking. Notice how dialogue alone carries a film."],q:"Where did the script lose energy, and what cut would have fixed it?",
+ sp:1,f:[["outline","Beat outline","Add a beat outline, then fill in each beat in a line or two."]],l:[],
+ i:[["Finish a rough draft","Aim for finished, not good."],["Read it aloud","Hear every line. Mark anywhere you stumble or get bored."],["Cut 10 percent","Remove the scene you love least. Tighter scripts shoot faster and cut better."],["Lock the script","Decide it’s ready. Later changes happen only if the shoot demands them."]]},
+{n:"Prep",c1:"#86198f",c2:"#e879f9",st:["El Mariachi","Made on a tiny budget. Its director wrote a book about how limits shaped every choice."],q:"What surprised me on set that better prep would have caught?",
+ f:[["sched","Shoot schedule","Date, call time, location, who is needed."]],l:[["shots","Shot list","Add a shot, e.g. Wide: Maya enters the kitchen"],["cast","Cast, crew and locations","Add a person or a place, and note if confirmed"]],
+ i:[["Build a shot list","List the shots that tell the story, then mark the three you can’t lose."],["Confirm cast, crew and locations","Get a yes in writing, including permission to film at each place."],["Schedule the shoot with buffer","Add 25 percent extra time. Something always runs long."],["Test sound and gear","Record 30 seconds in the real location. Bad audio is the hardest flaw to fix."]]},
+{n:"Shoot",c1:"#4c1d95",c2:"#8b5cf6",st:["Mad Max: Fury Road","Every shot is built to be read at a glance. Clarity beats complexity."],q:"What would I do differently on the next shoot day?",
+ f:[["log","Shoot log","What worked, what didn’t, what to fix next take."]],l:[["shots","Shot list (check off as you shoot)","Add a shot"],["pick","Pickups and missed shots","Add what you still need"]],
+ i:[["Shoot the essential shots first","Get the must-haves before the nice-to-haves, in case the day collapses."],["Record clean sound every take","Capture 30 seconds of room tone at each location."],["Back up footage the same day","Two copies in two places before anyone goes home."],["Wrap, then collect pickups","Note what you missed while it’s fresh. A short pickup day is normal."]]},
+{n:"Post",c1:"#155e75",c2:"#06b6d4",st:["The Social Network","Notice how cutting and sound make scenes of people talking feel tense."],q:"Which edit or sound choice made the biggest difference?",
+ f:[["edit","Edit notes","Cuts to try, sound fixes, music ideas."]],l:[["fb","Feedback notes","Add one note from a viewer"]],
+ i:[["Assemble a first cut","Don’t polish yet. Put every scene in order so you can see the whole shape."],["Show it to two people","Ask where they got confused or bored, not whether they liked it."],["Work on sound and music","Good sound lifts the picture more than any color grade."],["Lock picture and export","Stop tweaking. Done and shared beats perfect and hidden."]]},
+{n:"Premiere",c1:"#14532d",c2:"#22c55e",st:["Clerks","A tiny black-and-white film that reached audiences through festivals. Small films can travel."],q:"What did the audience show me that I couldn’t see myself?",
+ f:[["pitch","Poster text and description","Title, one-line pitch, credits."]],l:[["inv","Invite list","Add a person to invite"]],
+ i:[["Make a poster or thumbnail","One strong image gives people a reason to press play or show up."],["Choose where it premieres","A festival, a screening or online. Pick one and set the date."],["Invite people and share it","Personal invitations beat announcements. Ask ten people by name."],["Collect feedback, then start the next film","Write three lessons, then pick your next logline within a week."]]}
+];
+var LINES=["Every finished film makes the next one easier.","Progress counts, even on small days.","You’re building a habit, and the films will follow.","Showing up beats waiting for inspiration.","Rough and finished is better than perfect and unfinished."];
+var UNSTICK=["Set a timer for 2 minutes and write the worst possible version. Then fix one line.","Do only the first 30 seconds of the task. Stopping afterward is allowed.","Write what you’re avoiding as one plain sentence, then do the smallest piece of it.","Open the workspace below and type one sentence. Any sentence.","Tell one friend what you’ll finish today. Then do it.","Switch to an easier step in this stage. Momentum matters more than order."];
+var S={films:[],active:null,days:[]},UI={open:null,form:false,end:null,msg:"",exp:false},TM=null;
+try{var r=localStorage.getItem("reelcoach");if(r)S=JSON.parse(r)}catch(e){}
+S.ideas=S.ideas||[];S.films.forEach(function(f){f.t=f.t||{};f.l=f.l||{};f.notes=f.notes||{};f.fmt=f.fmt||"ldr";if(f.l.ideas){f.l.ideas.forEach(function(a){S.ideas.push({t:a.t})});delete f.l.ideas}});
+function save(){try{localStorage.setItem("reelcoach",JSON.stringify(S))}catch(e){}}
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+function ds(d){return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0")}
+function film(){return S.films.filter(function(f){return f.id===S.active})[0]}
+var FMT={ldr:{name:"Love, Death + Robots style",len:"6 to 17 minutes, one big idea",goal:"about 10 min",short:"10-minute",beats:"HOOK (0:00-0:30)\n\nWORLD AND RULE (0:30-2:00)\n\nESCALATION (2:00-6:00)\n\nTWIST (6:00-8:30)\n\nFINAL IMAGE (8:30-10:00)\n"},bm:{name:"Black Mirror style",len:"about 60 minutes, three acts",goal:"about 60 min",short:"hour-long",beats:"COLD OPEN (0-5 min)\n\nSETUP (5-15)\n\nCOMPLICATION (15-35)\n\nTURN (35-48)\n\nFALLOUT (48-57)\n\nFINAL IMAGE (57-60)\n"}};
+var HINT={ldr:["Aim for one big idea, one twist and one final image. Six to seventeen minutes can’t hold more.","About 1,800 words is roughly 10 minutes. Open on the hook, don’t explain the world, and land the twist late.","Keep it to one to three locations and a few characters. The style can be bold while the logistics stay tiny.","Pick one visual style and hold it across every shot.","Cut the middle, protect the ending. Short stories live on their last minute.","Think season, not just one film. Plan three or four stories that could play together."],bm:["Start from one piece of technology and ask what it does to ordinary people. Add a human question, not just a clever twist.","About 10,800 words is roughly an hour. Use three acts, a turn near the middle, and a quieter ending.","An hour needs more of everything: locations, rehearsal and buffer. Schedule generously.","Long films live on acting. Prioritize dialogue coverage and performance.","Watch pacing across the full hour. Mark every place your attention dips and tighten it.","A standalone hour can premiere on its own. Plan a proper screening, not just a link."]};
+var STUDY={ldr:[["Zima Blue","One simple idea and a final image that recasts everything before it."],["Sonnie’s Edge","A fast setup that builds to a reveal the story was hiding."],["Three Robots","A few characters, one idea and a strong voice. Small casts can feel big."],["The Witness","A bold visual style carries a chase. Style can be your production design."],["Beyond the Aquila Rift","Mood and dread built slowly through sound before the reveal."],["Love, Death + Robots","Each episode stands alone, so several short films can premiere together as a season."]],bm:[["Nosedive","One everyday technology pushed to its logical extreme."],["White Christmas","Stories inside stories, building to a reveal."],["San Junipero","A few locations, two leads and a strong emotional center."],["Shut Up and Dance","Tension built from ordinary places and a small cast."],["Hated in the Nation","A long episode that holds a mystery together with tight pacing."],["Black Mirror","Each episode stands alone, so one hour-long film can premiere on its own."]]};
+function fmtOpts(v){return Object.keys(FMT).map(function(k){return '<option value="'+k+'"'+(k===v?' selected':'')+'>'+FMT[k].name+'</option>'}).join('')}
+function wcText(w){return w+" words, about "+Math.round(w/180)+" min on screen. Goal: "+FMT[film().fmt].goal}
+function beats(){var f=film(),c=f.t.outline||"";f.t.outline=(c?c+"\n\n":"")+FMT[f.fmt].beats;save();render()}
+var KS=["s","a","c","d","p","t"],NX={s:"a",a:"a",c:"d",p:"d",d:"a",t:"s"},KN={s:"Scene",a:"Action",c:"Character",d:"Dialogue",p:"Paren.",t:"Transition"};
+var SA=["a robot that can’t lie","memories that can be rented","a city run by a ratings system","a soldier who can’t die","a grief app that talks like the dead","an AI that wants a day off","a monster that only appears on camera","a world where sleep is optional"],SB=["it’s the only way to save someone you love","the one person who notices becomes the villain","someone finds the off switch","the twist is who built it","nobody remembers why it started","the price is a memory"];
+function sp(f){if(!f.sp){var a=[];(f.t.script||"").split(/\n\s*\n/).forEach(function(x){if(x.trim())a.push({k:"a",t:x.trim()})});f.sp=a.length?a:[{k:"s",t:""}]}return f.sp}
+function spW(f){var w=0;sp(f).forEach(function(b){var t=b.t.trim();if(t)w+=t.split(/\s+/).length});return w}
+function fit(e){e.style.height="auto";e.style.height=e.scrollHeight+"px"}
+function foc(i){var e=document.getElementById("sp-"+i);if(e){e.focus();e.setSelectionRange(e.value.length,e.value.length)}}
+function hl(){var f=film();if(!f||!f.sp)return;var b=f.sp[UI.spi];document.querySelectorAll(".tb button").forEach(function(x){x.classList.toggle("on",!!b&&x.dataset.k===b.k)})}
+function setK(i,k){var f=film();f.sp[i].k=k;var e=document.getElementById("sp-"+i);e.parentNode.className="sp k-"+k;if(k=="p"&&!f.sp[i].t){f.sp[i].t="()";e.value="()";setTimeout(function(){e.focus();e.setSelectionRange(1,1)},0)}save();hl()}
+function spIn(i,e){var f=film(),b=f.sp[i];b.t=e.value;if(b.k=="a"&&/^(INT|EXT|I\/E)[. \/]/i.test(b.t))setK(i,"s");fit(e);save();var w=document.getElementById("wc");if(w)w.textContent=wcText(spW(f))}
+function spKey(ev,i){var f=film(),e=ev.target;
+if(ev.key=="Enter"&&!ev.shiftKey){ev.preventDefault();f.sp.splice(i+1,0,{k:NX[f.sp[i].k],t:""});save();render();foc(i+1)}
+else if(ev.key=="Tab"){ev.preventDefault();setK(i,KS[(KS.indexOf(f.sp[i].k)+(ev.shiftKey?5:1))%6])}
+else if(ev.key=="Backspace"&&e.value===""&&f.sp.length>1){ev.preventDefault();f.sp.splice(i,1);save();render();foc(Math.max(0,i-1))}}
+function spType(k){var f=film();if(UI.spi==null||!f.sp[UI.spi])return;setK(UI.spi,k);foc(UI.spi)}
+function spAdd(){var f=film(),b=sp(f),n=b.length;b.push({k:NX[b[n-1].k],t:""});save();render();foc(n)}
+function spTxt(f){return sp(f).map(function(b){var t=b.t;if(b.k=="s"||b.k=="c"||b.k=="t")t=t.toUpperCase();var pre={s:"",a:"",c:"                    ",p:"               ",d:"          ",t:"                                        "}[b.k];return(b.k=="s"?"\n":"")+pre+t}).join("\n")}
+function editor(f){var b=sp(f),h='<div class="row" style="margin-top:8px"><button class="b alt" onclick="beats()">Add '+FMT[f.fmt].short+' beat outline</button></div><h3 class="w">Screenplay</h3><div class="tb" role="toolbar" aria-label="Line type">';
+KS.forEach(function(k){h+='<button type="button" data-k="'+k+'" onclick="spType(\''+k+'\')">'+KN[k]+'</button>'});
+h+='</div><p class="tip">Enter adds the next line. Tab changes the line type. Typing INT. or EXT. starts a scene heading. Backspace on an empty line removes it.</p><div class="page">';
+b.forEach(function(x,i){h+='<div class="sp k-'+x.k+'"><textarea class="spt" id="sp-'+i+'" rows="1" aria-label="Screenplay line '+(i+1)+'" onfocus="UI.spi='+i+';hl()" oninput="spIn('+i+',this)" onkeydown="spKey(event,'+i+')">'+esc(x.t)+'</textarea></div>'});
+return h+'</div><div class="row" style="margin-top:8px"><button class="b alt" onclick="spAdd()">Add line</button></div><div class="tip" id="wc">'+wcText(spW(f))+'</div>'}
+function ideaBank(){var a=S.ideas,h='<details class="card" id="ib"'+(UI.ib?' open':'')+' ontoggle="UI.ib=this.open"><summary>'+ic("spark",20)+' <b>Idea bank</b> ('+a.length+')</summary><p class="tip">Capture every idea here, even half-formed ones. Start your next film from the best one.</p><div class="row"><input type="text" id="ni" maxlength="200" placeholder="A film idea in one line" aria-label="Film idea" onkeydown="if(event.key===\'Enter\')iadd()"><button class="b" onclick="iadd()">Save idea</button><button class="b alt" onclick="spark()">Spark one</button></div>';
+a.forEach(function(x,i){h+='<div class="it"><div class="t">'+esc(x.t)+'</div><button class="b alt" onclick="istart('+i+')">Make it my next film</button><button class="x" aria-label="Remove idea" onclick="idel('+i+')">×</button></div>'});
+return h+'</details>'}
+function iadd(){var el=document.getElementById("ni"),v=el.value.trim();if(!v){el.focus();return}S.ideas.unshift({t:v});UI.ib=true;save();render();document.getElementById("ni").focus()}
+function spark(){var el=document.getElementById("ni");el.value="Premise: "+SA[Math.floor(Math.random()*SA.length)]+". Complication: "+SB[Math.floor(Math.random()*SB.length)]+".";el.focus()}
+function idel(i){S.ideas.splice(i,1);save();render()}
+function istart(i){var t=S.ideas[i].t,cur=film(),f={id:"f"+Date.now(),title:t.slice(0,80),done:{},notes:{},t:{logline:t},l:{},fmt:cur?cur.fmt:"ldr"};S.ideas.splice(i,1);S.films.push(f);S.active=f.id;UI.open=0;UI.form=false;save();render();window.scrollTo(0,0)}
+function fountain(f){var o="Title: "+f.title+"\nCredit: Written by\nAuthor: \n\n";sp(f).forEach(function(x){var t=x.t.trim();if(!t||t=="()")return;
+if(x.k=="s"){t=t.toUpperCase();if(!/^(INT|EXT|EST|I\/E)/.test(t))t="."+t;o+="\n"+t+"\n\n"}
+else if(x.k=="c")o+=t.toUpperCase()+"\n";
+else if(x.k=="p")o+=(/^\(/.test(t)?t:"("+t+")")+"\n";
+else if(x.k=="t"){t=t.toUpperCase();o+=(/TO:$/.test(t)?t:"> "+t)+"\n\n"}
+else o+=t+"\n\n"});return o}
+function cp(){var e=document.getElementById("ex"),b=document.getElementById("cpb");e.select();function ok(){b.textContent="Copied"}function no(){b.textContent="Selected. Copy it manually"}
+try{navigator.clipboard.writeText(e.value).then(ok,function(){try{document.execCommand("copy")?ok():no()}catch(x){no()}})}catch(x){try{document.execCommand("copy")?ok():no()}catch(y){no()}}}
+var STIC=["ideate","script","prep","shoot","post","premiere"],IC={ideate:'<path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.5c.8.8 1 1.5 1 2.5h6c0-1 .2-1.7 1-2.5A6 6 0 0 0 12 3z"/>',script:'<path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/>',prep:'<rect x="6" y="4" width="12" height="17" rx="2"/><path d="M9 4h6v3H9zM9 12h6M9 16h4"/>',shoot:'<path d="M3 8a2 2 0 0 1 2-2h2l1.5-2h7L17 6h2a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><circle cx="12" cy="13" r="3.5"/>',post:'<circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4 8.1 15.9M14.5 14.5 20 20M8.1 8.1 12 12"/>',premiere:'<path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/>',spark:'<path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8zM19 16l.8 2.2L22 19l-2.2.8L19 22l-.8-2.2L16 19l2.2-.8z"/>',flame:'<path d="M12 3c1 4 5 5 5 10a5 5 0 0 1-10 0c0-2 1-3 2-4 0 2 1 3 2 3 0-3-1-5 1-9z"/>',trophy:'<path d="M8 4h8v6a4 4 0 0 1-8 0zM8 6H4v1a3 3 0 0 0 4 3M16 6h4v1a3 3 0 0 1-4 3M12 14v4M8 21h8M10 18h4"/>',timer:'<circle cx="12" cy="13" r="8"/><path d="M12 9v4l2 2M9 2h6"/>',help:'<circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.7.4-1 1-1 1.7M12 17h.01"/>',plus:'<path d="M12 5v14M5 12h14"/>',dl:'<path d="M12 3v12M7 10l5 5 5-5M5 21h14"/>',check:'<path d="M5 12l4 4 10-10"/>',next:'<path d="M5 12h14M13 6l6 6-6 6"/>',back:'<path d="M19 12H5M11 6l-6 6 6 6"/>'};
+function ic(n,s){s=s||18;return'<svg class="ic" width="'+s+'" height="'+s+'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+IC[n]+'</svg>'}
+function enter(){var c=document.getElementById("stg");if(c){c.classList.remove("in");void c.offsetWidth;c.classList.add("in")}}
+function celebrate(msg,n){var cols=["#f5c518","#fb7185","#e879f9","#8b5cf6","#06b6d4","#22c55e"],w=document.createElement("div");w.className="cf";w.setAttribute("aria-hidden","true");for(var i=0;i<n;i++){var p=document.createElement("i");p.style.cssText="left:"+Math.random()*100+"%;background:"+cols[i%6]+";animation-delay:"+Math.random()*.4+"s;--x:"+(Math.random()*160-80)+"px";w.appendChild(p)}var t=document.createElement("div");t.className="toast";t.setAttribute("role","status");t.textContent=msg;document.body.appendChild(w);document.body.appendChild(t);setTimeout(function(){w.remove();t.remove()},3600)}
+function go(d){var s=UI.open+d;if(s<0||s>5)return;UI.open=s;render();window.scrollTo(0,0);enter()}
+function cnt(f,s){var c=0;STAGES[s].i.forEach(function(_,k){if(f.done[s+"-"+k])c++});return c}
+function total(f){var c=0;STAGES.forEach(function(_,s){c+=cnt(f,s)});return c}
+function isDone(f){return total(f)===24}
+function streak(){var d=new Date(),n=0;if(S.days.indexOf(ds(d))<0)d.setDate(d.getDate()-1);while(S.days.indexOf(ds(d))>=0){n++;d.setDate(d.getDate()-1)}return n}
+function nextItem(f){for(var s=0;s<6;s++)for(var k=0;k<4;k++)if(!f.done[s+"-"+k])return[s,k]}
+function addFilm(){var el=document.getElementById("nt"),t=el.value.trim();if(!t){el.focus();return}
+var f={id:"f"+Date.now(),title:t,done:{},notes:{},t:{},l:{},fmt:document.getElementById("nf").value};S.films.push(f);S.active=f.id;UI.form=false;UI.open=0;save();render()}
+function tog(s,k){var f=film(),key=s+"-"+k,on=!f.done[key];f.done[key]=on;save();render();if(on){if(isDone(f))celebrate("Film finished! You made a film.",70);else if(cnt(f,s)==4)celebrate(STAGES[s].n+" complete. Frame filled!",36)}}
+function note(s,v){film().notes[s]=v;save()}
+function setf(k,v){film().t[k]=v;save();if(k=="script"){var w=v.trim()?v.trim().split(/\s+/).length:0,e=document.getElementById("wc");if(e)e.textContent=wcText(w)}}
+function setdate(v){film().t.date=v;save();render()}
+function ladd(k){var el=document.getElementById("li-"+k),v=el.value.trim();if(!v){el.focus();return}var f=film();(f.l[k]=f.l[k]||[]).push({t:v,d:0});save();render();document.getElementById("li-"+k).focus()}
+function ltog(k,i){var a=film().l[k][i];a.d=a.d?0:1;save();render()}
+function ldel(k,i){film().l[k].splice(i,1);save();render()}
+function logDay(){var t=ds(new Date());if(S.days.indexOf(t)<0)S.days.push(t);save();render()}
+function pick(s){UI.open=UI.open===s?-1:s;render();enter()}
+function stuck(){UI.msg=UNSTICK[Math.floor(Math.random()*UNSTICK.length)];render()}
+function sprint(){if(UI.end){UI.end=null;clearInterval(TM);UI.msg="";render();return}UI.end=Date.now()+600000;UI.msg="";TM=setInterval(tick,1000);render()}
+function tick(){var l=UI.end-Date.now();if(l<=0){clearInterval(TM);UI.end=null;UI.msg="Sprint done and today is logged. That’s a win. Keep going, or stop proudly.";logDay();return}var el=document.getElementById("tm");if(el)el.textContent=Math.floor(l/60000)+":"+String(Math.floor(l%60000/1000)).padStart(2,"0")}
+function days2(f){if(!f.t.date)return null;var a=new Date(f.t.date+"T00:00:00"),b=new Date();b.setHours(0,0,0,0);return Math.round((a-b)/864e5)}
+function exportTxt(f){var o=f.title+"\n\n";STAGES.forEach(function(g,s){o+="== "+g.n+" ==\n";g.f.forEach(function(x){o+=x[1]+":\n"+(f.t[x[0]]||"")+"\n\n"});g.l.forEach(function(x){o+=x[1]+":\n"+(f.l[x[0]]||[]).map(function(a){return(a.d?"[x] ":"[ ] ")+a.t}).join("\n")+"\n\n"});o+="Reflection: "+(f.notes[s]||"")+"\n\n"});o+="== Idea bank ==\n"+S.ideas.map(function(a){return"- "+a.t}).join("\n")+"\n";return o}
+function render(){
+var f=film(),fin=S.films.filter(isDone).length,st=streak();
+document.getElementById("stats").innerHTML='<div class="chip"><i style="--b:#f5c518">'+ic("trophy",20)+'</i><div><b>'+fin+'</b>films finished</div></div><div class="chip"><i style="--b:#fb923c">'+ic("flame",20)+'</i><div><b>'+st+'</b>day streak</div></div>';
+var h="";
+if(!f||UI.form){
+h+='<div class="card"><h3>'+(S.films.length?"Start a new film":"Start your first film")+'</h3><p class="tip">Small is fine. A short film you finish teaches more than a feature you don’t.</p><div class="row"><select id="nf" aria-label="Format">'+fmtOpts("ldr")+'</select><input type="text" id="nt" placeholder="Working title" aria-label="Working title" maxlength="80"><button class="b" onclick="addFilm()">Start film</button>'+(f?'<button class="b alt" onclick="UI.form=false;render()">Cancel</button>':'')+'</div></div>';
+}
+if(f){
+if(UI.open===null){var n0=nextItem(f);UI.open=n0?n0[0]:5}
+var tot=total(f),n=nextItem(f),dd=days2(f),msg;
+if(!n){msg='<p class="k">You finished “'+esc(f.title)+'”. That’s the hard part, and you did it.</p><p>Keep the momentum. Write the logline for your next film this week.</p>'}
+else{msg='<p class="k">'+LINES[tot%LINES.length]+'</p><p><b>Next step:</b> '+STAGES[n[0]].i[n[1]][0]+'.</p><p><b>To get better:</b> '+STAGES[n[0]].i[n[1]][1]+'</p>'}
+if(dd!==null&&n)msg+='<p><b>'+(dd>0?dd+' days to your premiere.':dd==0?'Premiere day.':'Your premiere date has passed. Pick a new one.')+'</b></p>';
+if(UI.msg)msg+='<p class="k">'+UI.msg+'</p>';
+msg+='<p class="tip">Format: '+FMT[f.fmt].name+' ('+FMT[f.fmt].len+')</p>';
+var today=S.days.indexOf(ds(new Date()))>=0;
+h+='<div class="card coach"><h3 class="hd">'+ic("spark",20)+' Your coach</h3>'+msg;
+if(UI.end)h+='<p>Only this matters for the next 10 minutes. Work on your next step.</p><div class="timer" id="tm">10:00</div>';
+h+='<div class="row" style="margin-top:12px"><button class="b" onclick="sprint()">'+ic("timer",16)+' '+(UI.end?"Stop sprint":"Start a 10-minute sprint")+'</button><button class="b alt" onclick="stuck()">'+ic("help",16)+' I’m stuck</button><button class="b alt" onclick="logDay()"'+(today?' disabled style="opacity:.6"':'')+'>'+ic("check",16)+" "+(today?"Logged today":"Log today")+'</button></div><div class="dots" aria-label="Last 7 days">';
+for(var i=6;i>=0;i--){var d=new Date();d.setDate(d.getDate()-i);h+='<span class="'+(S.days.indexOf(ds(d))>=0?"on":"")+'" title="'+ds(d)+'"></span>'}
+h+='</div></div>';
+h+=ideaBank();h+='<div class="row" style="align-items:center;margin-bottom:4px"><select id="sel" aria-label="Choose film" onchange="S.active=this.value;UI.open=null;save();render()">';
+S.films.forEach(function(x){h+='<option value="'+x.id+'"'+(x.id===S.active?" selected":"")+'>'+esc(x.title)+(isDone(x)?" (finished)":"")+'</option>'});
+h+='</select><select aria-label="Format" onchange="film().fmt=this.value;save();render()">'+fmtOpts(f.fmt)+'</select><button class="b alt" onclick="UI.form=true;render();document.getElementById(\'nt\').focus()">'+ic("plus",16)+' New film</button><button class="b alt" onclick="UI.exp=UI.exp==\'sp\'?false:\'sp\';render()">'+ic("dl",16)+' Export screenplay</button><button class="b alt" onclick="UI.exp=UI.exp==\'nt\'?false:\'nt\';render()">'+ic("dl",16)+' Export notes</button></div>';
+if(UI.exp)h+='<div class="card"><h3>'+(UI.exp=="sp"?"Screenplay":"Notes and planning")+'</h3><p class="tip">'+(UI.exp=="sp"?"Plain-text screenplay format (Fountain) that most screenwriting apps can import. Copy it into a .fountain or .txt file.":"Loglines, beat outline, shot lists, schedule, invite list, reflections and your idea bank. The screenplay is exported separately.")+'</p><textarea class="big" id="ex" readonly onfocus="this.select()">'+esc(UI.exp=="sp"?fountain(f):exportTxt(f))+'</textarea><div class="row" style="margin-top:8px"><button class="b" id="cpb" onclick="cp()">Copy</button><button class="b alt" onclick="UI.exp=false;render()">Close</button></div></div>';
+h+='<div class="strip" role="group" aria-label="Stages">';
+STAGES.forEach(function(g,s){var c=cnt(f,s);h+='<button class="fr'+(UI.open===s?" on":"")+'" onclick="pick('+s+')" aria-label="'+g.n+' '+c+' of 4"><i style="background:'+g.c2+';transform:scaleX('+c/4+')"></i><span>'+ic(STIC[s],18)+'<em>'+g.n+'</em></span></button>'});
+h+='</div>';
+var s=UI.open;
+if(s>=0){var g=STAGES[s];h+='<div class="card" id="stg" style="--c1:'+g.c1+';--c2:'+g.c2+'"><div class="banner"><span class="big">'+ic(STIC[s],96)+'</span><div><h2>'+g.n+'</h2><small>Study: <b>'+STUDY[f.fmt][s][0]+'</b>. '+STUDY[f.fmt][s][1]+'</small></div></div><p class="k" style="margin:0 0 6px">'+HINT[f.fmt][s]+'</p><div class="tip" style="margin-bottom:6px">'+cnt(f,s)+' of 4 steps done</div>';
+g.i.forEach(function(it,k){var d=f.done[s+"-"+k];h+='<div class="it'+(d?" d":"")+'"><input type="checkbox" id="c'+k+'"'+(d?" checked":"")+' onchange="tog('+s+','+k+')"><label for="c'+k+'" class="t"><div>'+it[0]+'</div>'+(d?'':'<div class="tip">'+it[1]+'</div>')+'</label></div>'});
+if(g.date)h+='<h3 class="w">Premiere date</h3><input type="date" aria-label="Premiere date" value="'+esc(f.t.date||"")+'" onchange="setdate(this.value)">';
+g.f.forEach(function(x){h+='<h3 class="w">'+x[1]+'</h3><textarea'+(x[3]?' class="big"':'')+' aria-label="'+x[1]+'" oninput="setf(\''+x[0]+'\',this.value)" placeholder="'+x[2]+'">'+esc(f.t[x[0]]||"")+'</textarea>';
+if(x[3]){var v=f.t[x[0]]||"",w=v.trim()?v.trim().split(/\s+/).length:0;h+='<div class="tip" id="wc">'+wcText(w)+'</div><div class="row" style="margin-top:8px"><button class="b alt" onclick="beats()">Add '+FMT[f.fmt].short+' beat outline</button></div>'}});
+if(g.sp)h+=editor(f);g.l.forEach(function(x){var a=f.l[x[0]]||[];h+='<h3 class="w">'+x[1]+'</h3>';
+a.forEach(function(e,i){h+='<div class="it'+(e.d?" d":"")+'"><input type="checkbox" aria-label="Done"'+(e.d?" checked":"")+' onchange="ltog(\''+x[0]+'\','+i+')"><div class="t">'+esc(e.t)+'</div><button class="x" aria-label="Remove" onclick="ldel(\''+x[0]+'\','+i+')">×</button></div>'});
+h+='<div class="row" style="margin-top:8px"><input type="text" id="li-'+x[0]+'" placeholder="'+x[2]+'" aria-label="'+x[2]+'" onkeydown="if(event.key==\'Enter\')ladd(\''+x[0]+'\')"><button class="b" onclick="ladd(\''+x[0]+'\')">Add</button></div>'});
+h+='<h3 class="w">Reflection: '+g.q+'</h3><textarea aria-label="Reflection" oninput="note('+s+',this.value)" placeholder="A sentence or two is enough.">'+esc(f.notes[s]||"")+'</textarea><div class="row" style="margin-top:14px;justify-content:space-between">'+(s>0?'<button class="b alt" onclick="go(-1)">'+ic("back",16)+' Back: '+STAGES[s-1].n+'</button>':'<span></span>')+(s<5?'<button class="b" onclick="go(1)">Next: '+STAGES[s+1].n+' '+ic("next",16)+'</button>':'')+'</div></div>'}
+}
+document.getElementById("app").innerHTML=h+(f?"":ideaBank());document.querySelectorAll(".spt").forEach(fit);UI.spi=null;hl();var cs=f?STAGES[Math.max(UI.open,0)]:null,rs=document.documentElement.style;rs.setProperty("--t1",cs?cs.c1:"#2457d6");rs.setProperty("--t2",cs?cs.c2:"#8fb0ff");
+}
+render();
+</script></body></html>
